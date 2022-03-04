@@ -1,34 +1,28 @@
 import {useState} from 'react';
 import ContactInfo from "./ContactInfo";
 import ContactDetail from "./ContactDetail";
-import ContactCreate from "./ContactCreate";
+import ContactCreate from "./ContactCreate";         
 
-function Contact(){
-    const [keyword, setKeyword]= useState('');
-    const [contactData, setContactData]= useState([
-        {id:1, name:'JIEUN', phone:'010.0000.1111'}, {id:2, name:'a', phone:'010.0000.1111'},
-        {id:3, name:'JI', phone:'010.0000.1111'}
-    ]);
-    const id=4;
-    const [selectedKey, setSelectedKey]= useState(-1);
+function Contact({onSearch, onShowDetail, onCreateNew}){
+    //const [keyword, setKeyword]= useState('');
+    // const id=5;
+    // const [selectedKey, setSelectedKey]= useState(-1);
 
-    const searchContact= (e)=> {
-        setKeyword(e.target.value);
-    } 
-    const handleNameClick= (key)=> { console.log(key)
-        setSelectedKey(key);
-    }
-    const contactDataCopy= contactData.concat();
+    // const searchContact= (e)=> {
+    //     setKeyword(e.target.value);
+    // } 
+    // const handleNameClick= (key)=> { console.log(key)
+    //     setSelectedKey(key);
+    // }
 
     return (
         <div>
             <h1>Contact</h1>
-            <input name='keyword' placeholder='Search' value={keyword} onChange={searchContact}/>
-            <ContactInfo contactDataCopy={contactDataCopy} handleNameClick={handleNameClick} 
+            <input name='keyword' placeholder='Search' onChange={onSearch}/>
+            {/* <ContactInfo contactDataCopy={contactDataCopy} handleNameClick={handleNameClick} 
                 keyword={keyword} />
             <ContactDetail contactData={contactData} selectedKey={selectedKey} />
-            <ContactCreate id={id} contactData={contactData} setContactData={setContactData}/>
-            
+            <ContactCreate id={id} contactData={contactData} setContactData={setContactData}/> */}
         </div>
         
     );
