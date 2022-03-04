@@ -9,6 +9,7 @@ function Contact(){
         {id:1, name:'JIEUN', phone:'010.0000.1111'}, {id:2, name:'a', phone:'010.0000.1111'},
         {id:3, name:'JI', phone:'010.0000.1111'}
     ]);
+    const id=4;
     const [selectedKey, setSelectedKey]= useState(-1);
 
     const searchContact= (e)=> {
@@ -17,7 +18,6 @@ function Contact(){
     const handleNameClick= (key)=> { console.log(key)
         setSelectedKey(key);
     }
-
     const contactDataCopy= contactData.concat();
 
     return (
@@ -26,11 +26,11 @@ function Contact(){
             <input name='keyword' placeholder='Search' value={keyword} onChange={searchContact}/>
             <ContactInfo contactDataCopy={contactDataCopy} handleNameClick={handleNameClick} 
                 keyword={keyword} />
-            <h2>Detail Information</h2>
             <ContactDetail contactData={contactData} selectedKey={selectedKey} />
-            <h2>Craete New User</h2>
-            <ContactCreate/>
+            <ContactCreate id={id} contactData={contactData} setContactData={setContactData}/>
+            
         </div>
+        
     );
 }
 export default Contact;
