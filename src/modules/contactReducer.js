@@ -1,13 +1,18 @@
 import { createAction } from "redux-actions";
 export const SEARCH= 'contact/SEARCH';
+export const ADD = 'contact/ADD'
 
 // const SHOW_DETAIL= 'contact/SHOW_DETAIL';
 // const CREATE_NEW= 'contact/CREATE_NEW';
 
-//export const search= createAction(SEARCH);
-const searchMember = ()=>{
-    return {type : SEARCH}
-}
+export const searchMember= createAction(SEARCH);
+export const addMember= createAction(ADD);
+/*
+export const addMember = (id)=>{
+    return {type:ADD , payload:id}
+
+}*/
+
 //export const search= (e)=> ({type: SEARCH});
 // export const showDetail= ()=> ({type: SHOW_DETAIL});
 // export const createNew= id=> ({type: CREATE_NEW});
@@ -18,10 +23,15 @@ export const initialState= [
 ]
 
 export default function contactReducer(state=initialState, action){
-    switch(state.type){
-        case SEARCH: 
+    switch(action.type){
+        case SEARCH:
             return state.map(
                 contact=> contact.id===action.id ? {...state} : null
+            )
+        case ADD:
+            console.log('이거',action.payload)
+            return (
+                state.concat(action.payload)
             )
         // case SHOW_DETAIL:
         //     return state;

@@ -32,24 +32,24 @@ import contactReducer, {initialState} from "../modules/contactReducer";
 import rootReducer from "../modules";
 
 const  ContactInfo=({state}) =>{
-    const dispatch = useDispatch();
+
     const member = useSelector(({ contactReducer }) => contactReducer);
 
-
+    let list =[]
+    for(let i = 0 ;member.length>i ;i++){
+        list.push(
+            <div>{member[i].name}</div>
+        )
+    }
     let mem=''
-     mem = member.map(meme=>(
+/*     mem = member.map(meme=>(
         <div key={meme.id}>{meme.name}</div>
-    ))
-
-    dispatch({
-        type: types.UPDATE_AM_SLIP_REQUEST,
-        params: { approvalData: approvalData },
-    });
-
+    ))*/
+console.log(list)
     return (
         <div>
+            {list}
 
-            {mem}
         </div>
     );
 }
