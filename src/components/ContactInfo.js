@@ -32,7 +32,7 @@ import contactReducer, {initialState} from "../modules/contactReducer";
 import rootReducer from "../modules";
 
 const  ContactInfo=({state}) =>{
-
+    const dispatch = useDispatch();
     const member = useSelector(({ contactReducer }) => contactReducer);
 
 
@@ -40,6 +40,11 @@ const  ContactInfo=({state}) =>{
      mem = member.map(meme=>(
         <div key={meme.id}>{meme.name}</div>
     ))
+
+    dispatch({
+        type: types.UPDATE_AM_SLIP_REQUEST,
+        params: { approvalData: approvalData },
+    });
 
     return (
         <div>
